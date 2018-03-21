@@ -1,0 +1,55 @@
+server:
+  port: 8888
+
+spring:
+  datasource:
+         url: jdbc:mysql://localhost:3306/jcrs
+         username: root
+         password: 996298643
+         driver-class-name: com.mysql.jdbc.Driver
+         druid.initial-size: 1
+         druid.min-idle: 1
+         druid.max-active: 20
+         druid.test-on-borrow: true
+         druid.stat-view-servlet.allow: true
+  freemarker: 
+    cache: false
+    charset: UTF-8
+    check-template-location: true
+    content-type: text/html
+    expose-request-attributes: true
+    expose-session-attributes: true
+    request-context-attribute: request
+
+druid:
+    url: jdbc:mysql://localhost:3306/jcrs
+    username: root
+    password: 996298643
+    driver-class: com.mysql.jdbc.Driver
+    initial-size: 1
+    min-idle: 1
+    max-active: 20
+    test-on-borrow: true
+
+mybatis:
+    configuration:
+      map-underscore-to-camel-case: true
+    type-aliases-package: com.qinyum.*
+    mapper-locations: classpath:mapper/*.xml
+    typeAliasesPackage: com.qinyum.**.model
+
+mapper:
+    mappers:
+        - com.qinyum.common.mapper.BaseMapper
+    not-empty: false
+    identity: MYSQL
+
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+
+management:
+  security:
+    enabled: false
