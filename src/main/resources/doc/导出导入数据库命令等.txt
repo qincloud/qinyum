@@ -1,0 +1,2 @@
+-- 导出数据库命令
+mysqldump -u root  -p --default-character-set=utf8 jcrs >  /home/lzq996298643/app/dbbak/jcrs.sql
