@@ -36,6 +36,7 @@
 					<td>路径</td>
 					<td>菜单层级</td>
 					<td>上级菜单</td>
+					<td>创建时间</td>
 					<td>操作</td>
 				</tr>
 			</thead>
@@ -49,7 +50,7 @@
 					<td><#if (x.rank!) == '1'>目录级<#elseif (x.rank!) ==
 						'2'>菜单级<#else>按钮级</#if></td>
 					<td>${(x.parent)!}</td>
-
+               <td>${(x.create_time())!}</td>
 					<td><button href="#" onclick="edit('${(x.id)!}')"
 							class="btn btn-success btn-sm">编辑</button>
 						<button href="#" onclick="del('${(x.id)!}')"

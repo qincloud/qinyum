@@ -45,11 +45,12 @@
 				<tr class="active">
 					<td style="width: 5%"><input type="checkbox" class="checkall" /></td>
 					<td style="width: 5%">序号</td>
-					<td style="width: 18%">用户名</td>
-					<td style="width: 18%">姓名</td>
-					<td style="width: 18%">邮件</td>
-					<td style="width: 18%">电话</td>
-					<td style="width: 18%">操作</td>
+					<td style="width: 15%">用户名</td>
+					<td style="width: 15%">姓名</td>
+					<td style="width: 15%">邮件</td>
+					<td style="width: 15%">电话</td>
+					<td style="width: 15%">创建时间</td>
+					<td style="width: 15%">操作</td>
 				</tr>
 			</thead>
 			<tbody>
@@ -57,11 +58,12 @@
 				<tr>
 					<td><input type="checkbox" class="check" id="${(x.id)!}" /></td>
 					<td style="width: 10%">${x_index+(pageInfo.startRow)!0}</td>
-					<td style="width: 18%">${(x.logname)!}</td>
-					<td style="width: 18%">${(x.username)!}</td>
-					<td style="width: 18%">${(x.email)!}</td>
-					<td style="width: 18%">${(x.phone)!}</td>
-					<td style="width: 18%"><button href="#"
+					<td style="width: 15%">${(x.logname)!}</td>
+					<td style="width: 15%">${(x.username)!}</td>
+					<td style="width: 15%">${(x.email)!}</td>
+					<td style="width: 15%">${(x.phone)!}</td>
+					<td style="width: 15%">${(x.create_time())!}</td>
+					<td style="width: 15%"><button href="#"
 							onclick="edit('${(x.id)!}')" class="btn btn-success btn-sm">编辑</button>
 						<button onclick="del('${(x.id)!}','${(x.username)!}')"
 							class="btn btn-danger btn-sm">删除</button></td>

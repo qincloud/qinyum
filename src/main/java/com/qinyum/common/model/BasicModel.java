@@ -1,16 +1,15 @@
 package com.qinyum.common.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
 import org.hibernate.validator.constraints.Length;
+import org.joda.time.DateTime;
 
 public class BasicModel {
-	
 	/**
 	 * 主键
 	 */
@@ -47,7 +46,7 @@ public class BasicModel {
 
 	@Transient
 	private Integer rows = 10;
-	
+
 	public String getId() {
 		return id;
 	}
@@ -68,6 +67,16 @@ public class BasicModel {
 		return create_time;
 	}
 
+	public String create_time() {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		try {
+			return format.format(getCreate_time());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "";
+		}
+	}
+	
 	public void setCreate_time(Date create_time) {
 		this.create_time = create_time;
 	}
@@ -84,6 +93,16 @@ public class BasicModel {
 		return delete_time;
 	}
 
+	public String delete_time() {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		try {
+			return format.format(getDelete_time());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "";
+		}
+	}
+	
 	public void setDelete_time(Date delete_time) {
 		this.delete_time = delete_time;
 	}
