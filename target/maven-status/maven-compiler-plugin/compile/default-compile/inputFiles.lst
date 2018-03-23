@@ -1,3 +1,4 @@
+/home/lzq996298643/development_space/javaEE2017/qin/qinyum/src/main/java/com/qinyum/system/user/model/SysUserRole.java
 /home/lzq996298643/development_space/javaEE2017/qin/qinyum/src/main/java/com/qinyum/common/config/WebSecurityConfig.java
 /home/lzq996298643/development_space/javaEE2017/qin/qinyum/src/main/java/com/qinyum/system/dict/mapper/SysDictMapper.java
 /home/lzq996298643/development_space/javaEE2017/qin/qinyum/src/main/java/com/qinyum/common/controller/BaseController.java
@@ -21,6 +22,7 @@
 /home/lzq996298643/development_space/javaEE2017/qin/qinyum/src/main/java/com/qinyum/common/exception/GunsException.java
 /home/lzq996298643/development_space/javaEE2017/qin/qinyum/src/main/java/com/qinyum/system/user/mapper/SysUserMapper.java
 /home/lzq996298643/development_space/javaEE2017/qin/qinyum/src/main/java/com/qinyum/system/dict/service/SysDictService.java
+/home/lzq996298643/development_space/javaEE2017/qin/qinyum/src/main/java/com/qinyum/system/user/mapper/SysUserRoleMapper.java
 /home/lzq996298643/development_space/javaEE2017/qin/qinyum/src/main/java/com/qinyum/system/dict/controller/SysDictController.java
 /home/lzq996298643/development_space/javaEE2017/qin/qinyum/src/main/java/com/qinyum/common/security/QinUserDetailsService.java
 /home/lzq996298643/development_space/javaEE2017/qin/qinyum/src/main/java/com/qinyum/common/exception/GunsExceptionEnum.java

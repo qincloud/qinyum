@@ -1,6 +1,7 @@
 package com.qinyum.system.user.controller;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +15,9 @@ import com.qinyum.common.utils.Result;
 import com.qinyum.common.utils.StrKit;
 import com.qinyum.system.role.model.SysRole;
 import com.qinyum.system.role.service.SysRoleService;
+import com.qinyum.system.user.mapper.SysUserRoleMapper;
 import com.qinyum.system.user.model.SysUser;
+import com.qinyum.system.user.model.SysUserRole;
 import com.qinyum.system.user.service.SysUserService;
 
 @Controller
@@ -27,6 +30,9 @@ public class SysUserController extends BaseController {
 
 	@Autowired
 	private SysRoleService roleservice;
+	
+	@Autowired
+	SysUserRoleMapper urdao;
 
 	@RequestMapping()
 	public String index(SysUser user) {
@@ -51,6 +57,8 @@ public class SysUserController extends BaseController {
 		setAttribute("model", user);
 		List<SysRole> roles = roleservice.findAll();
 		model.addAttribute("roles", roles);
+		List<SysUserRole> urs = service.findByUserid(user.getId());
+		model.addAttribute("urs", urs);
 		return prefix + "/user_add";
 	}
 
@@ -58,10 +66,33 @@ public class SysUserController extends BaseController {
 	@ResponseBody
 	public Result saveorupdate(SysUser user) {
 		if (StrKit.notBlank(user.getId())) {
+			String userid = user.getId();
+			urdao.deleteByUserid(userid);
+			String result = getParameter("result");
+			String[] res = result.split(",");
+			for(String r : res) {
+				SysUserRole ur = new SysUserRole();
+				ur.setId(UUID.randomUUID().toString());
+				ur.setUserid(userid);
+				ur.setRoleid(r);
+				urdao.insert(ur);
+			}
 			return service.update(user);
 		} else {
-			return service.save(user);
+			String userid = service.saveonly(user);
+			urdao.deleteByUserid(userid);
+			String result = getParameter("result");
+			String[] res = result.split(",");
+			for(String r : res) {
+				SysUserRole ur = new SysUserRole();
+				ur.setId(UUID.randomUUID().toString());
+				ur.setUserid(userid);
+				ur.setRoleid(r);
+				urdao.insert(ur);
+			}
+			return Result.build(200, "保存成功");
 		}
+		
 	}
 
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)

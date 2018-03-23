@@ -2,6 +2,7 @@ package com.qinyum.system.user.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -11,15 +12,19 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.qinyum.common.service.BaseService;
 import com.qinyum.common.utils.StrKit;
-import com.qinyum.system.menu.model.SysMenu;
 import com.qinyum.system.user.mapper.SysUserMapper;
+import com.qinyum.system.user.mapper.SysUserRoleMapper;
 import com.qinyum.system.user.model.SysUser;
+import com.qinyum.system.user.model.SysUserRole;
 
 import tk.mybatis.mapper.entity.Example;
 
 @Service
 public class SysUserService extends BaseService<SysUser, SysUserMapper> implements UserDetailsService{
 
+	@Autowired
+	private SysUserRoleMapper urmapper;
+	
 	public PageInfo<SysUser> query(SysUser model) {
 		if (model.getPage() != null && model.getRows() != null) {
 			PageHelper.startPage(model.getPage(), model.getRows());
@@ -77,6 +82,10 @@ public class SysUserService extends BaseService<SysUser, SysUserMapper> implemen
 		} else {
 			return null;
 		}
+	}
+	
+	public List<SysUserRole> findByUserid(String userid){
+		return urmapper.findByUserid(userid);
 	}
 
 	@Override

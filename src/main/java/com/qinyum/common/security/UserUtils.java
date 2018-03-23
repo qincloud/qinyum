@@ -44,7 +44,7 @@ public class UserUtils {
 	 * 获得用户名
 	 * */
 	public static String getUsername() {
-        return getUser().getUsername();
+        return getUser()==null ? "" : getUser().getUsername();
 	}
 	
 	/**

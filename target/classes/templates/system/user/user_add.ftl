@@ -54,7 +54,12 @@
 			e.preventDefault();
 			var $form = $(e.target);
 			var bv = $form.data('bootstrapValidator');
-			$.post($form.attr('action'), $form.serialize(), function(json) {
+			var $result = $(".checkboxs:checked");
+			var restr = "";
+			$result.each(function() {
+					restr += $(this).attr("id")+",";
+			});
+			$.post($form.attr('action'), $form.serialize()+"&result="+restr, function(json) {
 				if (json.status == '200') {
 					alert(json.msg);
 				} else {
@@ -94,15 +99,31 @@
 					class="form-control" id="email" name="email"
 					value="${(model.email)!}" placeholder="">
 			</div>
+			<!--------------------- 以下角色按钮设置 --------------------->
 			<div>
+			   <#assign x="0xc5b2cc11000309cb">    <!-- 随便设置了个变量 -->
 				<#if roles??> <#list roles as role>
+				<#list urs as rid>
+				<#if (rid.roleid) == (role.id)>
 				<div
 					class="checkbox3 checkbox-success checkbox-inline checkbox-check checkbox-round  checkbox-light">
-					<input type="checkbox" id="${(role.id)!}"> <label
+					<input type="checkbox" class="checkboxs" id="${(role.id)!}" checked=""> <label
 						for="${(role.id)!}">${(role.name)!}</label>
 				</div>
+				<#assign x>${(role.id)!}</#assign>
+				</#if>
+				</#list>
+				<#if (role.id) == (x)>
+				<#else>
+				<div
+					class="checkbox3 checkbox-success checkbox-inline checkbox-check checkbox-round  checkbox-light">
+					<input type="checkbox" class="checkboxs" id="${(role.id)!}"> <label
+						for="${(role.id)!}">${(role.name)!}</label>
+				</div>
+				</#if>
 				</#list> </#if>
 			</div>
+			<!--------------------- 以上角色按钮设置 --------------------->
 			<div class="form-group">
 				<div class="col-lg-9 col-lg-offset-3">
 					<button type="submit" class="btn btn-info">保存</button>

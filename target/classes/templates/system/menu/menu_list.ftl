@@ -53,7 +53,7 @@
                <td>${(x.create_time())!}</td>
 					<td><button href="#" onclick="edit('${(x.id)!}')"
 							class="btn btn-success btn-sm">编辑</button>
-						<button href="#" onclick="del('${(x.id)!}')"
+						<button href="#" onclick="del('${(x.id)!}','${(x.name)!}')"
 							class="btn btn-danger btn-sm">删除</button></td>
 				</tr>
 				</#list>
@@ -79,15 +79,24 @@
 		location.href = "/system/menu/edit?id=" + id;
 	}
 
-	function del(id) {
-		$.getJSON('/system/menu/delete', {
-			"id" : id
-		}, function(json) {
-			if (json.status == '200') {
-				alert(json.msg);
-				location.href = '/system/menu'
+	function del(id,xm) {
+		var submit = function(v, h, f) {
+			if (v == 'ok') {
+				$.post('/system/menu/delete', {
+					"id" : id
+				}, function(json) {
+					if (json.status == 200) {
+						location.href = "/system/menu";
+					}
+					else{
+						alert(json.msg)
+					}
+				});
+			} else if (v == 'cancel') {
 			}
-		});
+			return true; //close
+		};
+		$.jBox.confirm("确定要删除" + xm + "吗？", "提示", submit);
 	}
 
 	function tark(url) {

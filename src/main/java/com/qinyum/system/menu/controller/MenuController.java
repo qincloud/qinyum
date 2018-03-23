@@ -53,6 +53,7 @@ public class MenuController extends BaseController {
 	}
 
 	@PostMapping("/delete")
+	@ResponseBody
 	public Result delete() {
 		String id = getParameter("id");
 		return service.delete(service.findById(id));
