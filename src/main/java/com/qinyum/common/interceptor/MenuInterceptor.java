@@ -40,7 +40,6 @@ public class MenuInterceptor implements HandlerInterceptor {
 			} else {
 				List<SysMenu> ms = mservcice.findMenuByUserid(UserUtils.getId());
 				request.setAttribute("ms", ms);
-				System.out.println("test==========================================================");
 				for(SysMenu m : ms) {
 					System.out.println(m.getName());
 				}

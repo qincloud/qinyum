@@ -12,7 +12,7 @@ import com.qinyum.system.role.model.SysRoleMenu;
 @Repository
 public interface SysRoleUserMapper extends BaseMapper<SysRoleMenu> {
 
-	@Delete("delete role_menu where roleid = #{roleid}")
+	@Delete("delete from role_menu where roleid = #{roleid}")
 	public void deleteByRoleid(String roleid);
 
 	@Select("select * from role_menu where roleid = #{roleid}")

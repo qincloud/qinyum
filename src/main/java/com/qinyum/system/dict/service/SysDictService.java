@@ -22,8 +22,6 @@ public class SysDictService extends BaseService<SysDict,SysDictMapper>{
 		Example example = new Example(model.getClass());
 		Example.Criteria criteria = example.createCriteria();
 		
-		
-		
 		criteria.andEqualTo("del_flag", "0");
 		return new PageInfo<SysDict>(dao.selectByExample(example));
 	}

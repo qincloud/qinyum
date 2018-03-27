@@ -103,6 +103,7 @@
 			<div>
 			   <#assign x="0xc5b2cc11000309cb">    <!-- 随便设置了个变量 -->
 				<#if roles??> <#list roles as role>
+				<#if (urs)??>
 				<#list urs as rid>
 				<#if (rid.roleid) == (role.id)>
 				<div
@@ -113,6 +114,7 @@
 				<#assign x>${(role.id)!}</#assign>
 				</#if>
 				</#list>
+				</#if>
 				<#if (role.id) == (x)>
 				<#else>
 				<div

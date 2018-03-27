@@ -82,13 +82,16 @@
 	}
 
 	function checknodes(node) {
+		console.log(JSON.stringify(node));
 		if (typeof (node) != "undefined") {
 			for (var i = 0; i < node.length; i++) {
 				if (typeof (node[i].state.checked) != "undefined"
-						|| node[i].state.checked) {
+						&& (node[i].state.checked == true || node[i].state.checked == "true")) {
 					result += node[i].href + ",";
 				}
-				checknodes(node[i]);
+				if(typeof (node[i].nodes) != "undefined"){
+				   checknodes(node[i].nodes);
+				}
 			}
 		}
 	}
@@ -161,7 +164,9 @@
 
 	var $checkableTree = null;
 	$(function() {
-		$.get('/system/role/nodes', function(json) {
+		<#if (flag)=='add_page'>
+		/******************* 添加页面功能资源树请求 *******************/
+		$.post('/system/role/nodes', function(json) {
 			var defaultData = [ {
 				text : '顶级菜单',
 				href : '#parent1',
@@ -211,6 +216,63 @@
 						}
 					});
 		});
-	})
+		/******************* 添加页面功能资源树请求 *******************/
+		</#if>
+		
+		/******************* 编辑页面功能资源树请求 *******************/
+		<#if (flag)=='edit_page'>
+		$.post('/system/role/nodes2',{roleid:'${(roleid)!}'}, function(json) {
+			var defaultData = [ {
+				text : '顶级菜单',
+				href : '#parent1',
+				selectable : true,
+				state : {
+					checked : true,
+					disabled : false,
+					expanded : true,
+					selected : false
+				},
+				nodes : json.data
+			} ]
+
+			$checkableTree = $('#treeview-checkable').treeview(
+					{
+						data : defaultData,
+						showIcon : false,
+						showCheckbox : true,
+						onNodeChecked : function(event, node) { //选中节点 
+							var selectNodes = getChildNodeIdArr(node); //获取所有子节点      
+							if (selectNodes) { //子节点不为空，则选中所有子节点       
+								$('#treeview-checkable').treeview('checkNode',
+										[ selectNodes, {
+											silent : true
+										} ]);
+							}
+							var parentNode = $("#treeview-checkable").treeview(
+									"getNode", node.parentId);
+							//setParentNodeCheck(node);
+						},
+						onNodeUnchecked : function(event, node) { //取消选中节点  
+							// 取消父节点 子节点取消
+							var selectNodes = setChildNodeUncheck(node); //获取未被选中的子节点 
+							var childNodes = getChildNodeIdArr(node); //获取所有子节点 
+							if (selectNodes && selectNodes.length == 0) { //有子节点且未被选中的子节点数目为0，则取消选中所有子节点   
+								$('#treeview-checkable').treeview(
+										'uncheckNode', [ childNodes, {
+											silent : true
+										} ]);
+							}
+							// 取消节点 父节点取消
+							//var parentNode = $("#treeview-checkable").treeview(
+							//		"getNode", node.parentId);
+							//获取父节点
+							//var selectNodes = getChildNodeIdArr(node);
+							//setParentNodeCheck(node);
+						}
+					});
+		});
+		</#if>
+		/******************* 编辑页面功能资源树请求 *******************/
+	});
 </script>
 </@frame>

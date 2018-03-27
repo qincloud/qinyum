@@ -21,7 +21,7 @@ body {
 	width: 50%;
 	height: 100%;
 	bottom: 0;
-	margin-top: 50px;
+	margin-top: auto;
 	margin-left: auto;
 	margin-right: auto;
 	clear: both;
@@ -93,6 +93,9 @@ body {
 </script>
 </head>
 <body>
+   <div>
+       <img src="/tmp/image/loginlogo.png" />
+   </div>
 	<form action="/loginCheck" id='loginForm' method="POST">
 	<div id="wrapper" class="bns-03">
 		<div id="loginWindow">
