@@ -27,6 +27,11 @@ public class SysOrg extends BasicModel implements java.io.Serializable {
 	 * 上级机构编码
 	 */
 	public String fbm;
+	
+	/**
+	 * 排序号
+	 * */
+	public String pxh;
 
 	public String getMc() {
 		return mc;
@@ -60,4 +65,13 @@ public class SysOrg extends BasicModel implements java.io.Serializable {
 		this.fbm = fbm;
 	}
 
+	public String getPxh() {
+		return pxh;
+	}
+
+	public void setPxh(String pxh) {
+		this.pxh = pxh;
+	}
+
+	
 }

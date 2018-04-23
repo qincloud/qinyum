@@ -22,8 +22,6 @@ import com.qinyum.system.org.service.SysOrgService;
 public class SysOrgController extends BaseController {
 	private static final String PREFIX = "system/org/";
 
-
-	
 	@Autowired
 	private SysOrgService service;
 
@@ -68,6 +66,7 @@ public class SysOrgController extends BaseController {
 		} else {
 			return service.update(menu);
 		}
-
 	}
+
+	
 }
