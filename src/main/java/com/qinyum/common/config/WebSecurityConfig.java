@@ -33,8 +33,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	protected void configure(HttpSecurity http) throws Exception {
 		http
-		.addFilter(filterSecurityInterceptor())
-		.authorizeRequests().antMatchers("/login", "/tmp/**").permitAll()
+		.authorizeRequests().antMatchers("/login", "/tmp/**","/image/**").permitAll()
 				.anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll()
 				.loginProcessingUrl("/loginCheck").permitAll().failureUrl("/login?error").permitAll()
 				.successHandler(loginSuccessHandler()).permitAll()
@@ -46,8 +45,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.rememberMe()
 				// 设置有效时间
 				.tokenValiditySeconds(30 * 60 * 60)
-				.and().exceptionHandling()
-				.authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login"));
+				.and().exceptionHandling();
+//				.authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login"))
+		http.addFilter(filterSecurityInterceptor());
 	}
 
 	@Bean

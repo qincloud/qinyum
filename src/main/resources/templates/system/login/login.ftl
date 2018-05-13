@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 <head>
+<link rel="shortcut icon " type="images/x-icon" href="/image/favicon.ico">
 <title>监狱局警察人事系统</title>
 <style>
 html {

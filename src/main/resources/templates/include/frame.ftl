@@ -6,6 +6,7 @@
 <head>
 <meta name="_csrf" content="${_csrf.token}">
 <meta name="_csrf_header" content="${_csrf.headerName}">
+<link rel="shortcut icon " type="images/x-icon" href="/image/favicon.ico">
 <title>监狱局警察人事系统</title>
 <!-- CSS statics -->
 <link rel="stylesheet" type="text/css" href="/tmp/css/bootstrap.min.css">
