@@ -1,5 +1,6 @@
 <#compress> <#macro frame title charset="utf-8" lang="zh-CN">
-
+<#assign fns=JspTaglibs["http://java.sun.com/jsp/jstl/functionss"] />
+<#assign sec=JspTaglibs["http://www.springframework.org/security/tags"]/>
 <!doctype html>
 <html>
 <head>
@@ -271,7 +272,7 @@
 							</ul></li>
 						<li class="dropdown profile"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-expanded="false">${(username)!} <span class="caret"></span></a>
+							aria-expanded="false">${fns.getUsername()} <span class="caret"></span></a>
 							<ul class="dropdown-menu animated fadeInDown">
 								<!-- 
 								<li class="profile-img"><img

@@ -15,4 +15,19 @@ public class IndexController extends BaseController {
 	public String index(Model model) {
 		return "/index";
 	}
+	
+	@RequestMapping("403")
+	public String f403() {
+		return "/403";
+	}
+	
+	@RequestMapping("404")
+	public String f404() {
+		return "/404";
+	}
+	
+	@RequestMapping("500")
+	public String f500() {
+		return "/500";
+	}
 }

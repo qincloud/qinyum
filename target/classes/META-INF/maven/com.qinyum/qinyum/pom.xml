@@ -11,6 +11,11 @@
 	</parent>
 	<dependencies>
 		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.6</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
@@ -54,13 +59,9 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency> 
-		<!-- spring-boot热部署 -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<optional>true</optional> <!-- 这个需要为 true 热部署才有效 -->
 		</dependency>
+		<!-- spring-boot热部署 <dependency> <groupId>org.springframework.boot</groupId> 
+			<artifactId>spring-boot-devtools</artifactId> <optional>true</optional> </dependency> --> <!-- 这个需要为 true 热部署才有效 -->
 
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
@@ -92,7 +93,7 @@
 		<dependency>
 			<groupId>tk.mybatis</groupId>
 			<artifactId>mapper-spring-boot-starter</artifactId>
-			<version>1.1.5</version>
+			<version>1.1.7</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.pagehelper</groupId>
@@ -126,6 +127,28 @@
 			<artifactId>httpclient</artifactId>
 			<version>4.3.5</version>
 		</dependency>
+
+		<!-- jsp,jstl -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.2</version>
+		</dependency>
+		<!-- jsp,jstl -->
+
+		<!-- spring security标签 -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>4.2.2.RELEASE</version>
+		</dependency>
+		<!-- spring security标签 -->
 	</dependencies>
 
 

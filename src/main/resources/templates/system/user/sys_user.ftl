@@ -39,18 +39,18 @@
 
 	<div class="card-body">
 		<table
-			class="table table-striped table-bordered table-hover table-condensed"
+			class="table table-bordered table-striped table-hover table-condensed"
 			width="100%">
 			<thead class="">
 				<tr class="active">
 					<td style="width: 5%"><input type="checkbox" class="checkall" /></td>
-					<td style="width: 5%">序号</td>
+					<td style="width: 3%">序号</td>
 					<td style="width: 15%">用户名</td>
 					<td style="width: 15%">姓名</td>
 					<td style="width: 15%">邮件</td>
 					<td style="width: 15%">电话</td>
 					<td style="width: 15%">创建时间</td>
-					<td style="width: 15%">操作</td>
+					<td style="width: 17%">操作</td>
 				</tr>
 			</thead>
 			<tbody>

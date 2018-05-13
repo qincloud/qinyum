@@ -65,7 +65,13 @@ public class UserUtils {
 	 * 获得当前用户
 	 * */
 	public static SysUser getUser() {
-		return (SysUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Object object = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if(object instanceof SysUser) {
+			return (SysUser)object;	
+		}else {
+			SysUser user = new SysUser();
+			return user;
+		}
 	}
 	
 	/**

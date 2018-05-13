@@ -6,16 +6,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.web.DefaultRedirectStrategy;
+import org.springframework.security.web.RedirectStrategy;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.qinyum.common.security.UserUtils;
+import com.qinyum.common.utils.StrKit;
 import com.qinyum.system.menu.model.SysMenu;
 import com.qinyum.system.menu.service.SysMenuService;
 
 public class MenuInterceptor implements HandlerInterceptor {
 	@Autowired
 	private SysMenuService mservcice;
+
+	private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
 	@Override
 	public void afterCompletion(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2, Exception arg3)
@@ -34,13 +39,17 @@ public class MenuInterceptor implements HandlerInterceptor {
 		String method = request.getMethod();
 		if (method.equals("GET")) {
 			String username = UserUtils.getUsername();
+//			if(StrKit.isBlank(username)) {
+//				redirectStrategy.sendRedirect(request,response,"/login");
+//				return false;
+//			}
 			if (username.equals("admin")) {
 				List<SysMenu> ms = mservcice.findByChild("0");
 				request.setAttribute("ms", ms);
 			} else {
 				List<SysMenu> ms = mservcice.findMenuByUserid(UserUtils.getId());
 				request.setAttribute("ms", ms);
-				for(SysMenu m : ms) {
+				for (SysMenu m : ms) {
 					System.out.println(m.getName());
 				}
 			}

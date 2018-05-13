@@ -46,7 +46,7 @@ public class QinAccessDecisionManager implements AccessDecisionManager {
                 }
             }
         }
-        throw new AccessDeniedException("no right");
+      throw new AccessDeniedException("哎呀不能访问了啊");
     }
 
 

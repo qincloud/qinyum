@@ -12,6 +12,7 @@
 /home/lzq996298643/development_space/javaEE2017/qin/qinyum/src/main/java/com/qinyum/common/interceptor/QinFilterSecurityInterceptor.java
 /home/lzq996298643/development_space/javaEE2017/qin/qinyum/src/main/java/com/qinyum/common/config/TransactionConfig.java
 /home/lzq996298643/development_space/javaEE2017/qin/qinyum/src/main/java/com/qinyum/system/org/service/SysOrgService.java
+/home/lzq996298643/development_space/javaEE2017/qin/qinyum/src/main/java/com/qinyum/common/config/LoginSuccessHandler.java
 /home/lzq996298643/development_space/javaEE2017/qin/qinyum/src/main/java/com/qinyum/common/utils/WafKit.java
 /home/lzq996298643/development_space/javaEE2017/qin/qinyum/src/main/java/com/qinyum/system/index/controller/IndexController.java
 /home/lzq996298643/development_space/javaEE2017/qin/qinyum/src/main/java/com/qinyum/common/utils/HttpClientUtil.java
@@ -29,6 +30,7 @@
 /home/lzq996298643/development_space/javaEE2017/qin/qinyum/src/main/java/com/qinyum/system/user/model/SysUser.java
 /home/lzq996298643/development_space/javaEE2017/qin/qinyum/src/main/java/com/qinyum/system/role/service/SysRoleService.java
 /home/lzq996298643/development_space/javaEE2017/qin/qinyum/src/main/java/com/qinyum/system/menu/service/SysMenuService.java
+/home/lzq996298643/development_space/javaEE2017/qin/qinyum/src/main/java/com/qinyum/common/security/CustomInvocationSecurityMetadataSourceService.java
 /home/lzq996298643/development_space/javaEE2017/qin/qinyum/src/main/java/com/qinyum/system/org/model/SysOrg.java
 /home/lzq996298643/development_space/javaEE2017/qin/qinyum/src/main/java/com/qinyum/common/utils/PageKit.java
 /home/lzq996298643/development_space/javaEE2017/qin/qinyum/src/main/java/com/qinyum/system/user/controller/SysUserController.java
