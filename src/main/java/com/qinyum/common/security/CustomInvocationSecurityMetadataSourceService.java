@@ -92,6 +92,8 @@ public class CustomInvocationSecurityMetadataSourceService implements FilterInvo
 					resourceMap.put(url, atts);// 一个URL对应多种角色
 				}
 			}
+			
+			
 		}
 		
 		List<SysMenu> menus = menuMapper.findMenuForHref(); //查询所有的访问级菜单
@@ -103,6 +105,11 @@ public class CustomInvocationSecurityMetadataSourceService implements FilterInvo
 				atts.add(configAttribute);
 				resourceMap.put(url, atts);
 			}
+		}
+		Iterator<String> iterator = resourceMap.keySet().iterator();
+		while (iterator.hasNext()) {
+			String resURL = iterator.next();
+			System.out.println("url＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝"+resURL);
 		}
 	}
 
@@ -119,6 +126,7 @@ public class CustomInvocationSecurityMetadataSourceService implements FilterInvo
 		Iterator<String> iterator = resourceMap.keySet().iterator();
 		while (iterator.hasNext()) {
 			String resURL = iterator.next();
+			System.out.println("url2＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝"+resURL);
 			// 优化请求路径后面带参数的部分
 			RequestMatcher requestMatcher = new AntPathRequestMatcher(resURL);
 			if (requestMatcher.matches(filterInvocation.getHttpRequest())) {

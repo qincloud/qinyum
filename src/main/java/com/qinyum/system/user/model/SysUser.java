@@ -107,10 +107,12 @@ public class SysUser extends BasicModel implements UserDetails, java.io.Serializ
 		Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 		if (getLogname().equals("admin")) {
 			SysRoleService roleService = SpringContextHolder.getBean(SysRoleService.class);
-			for (SysRole role : roleService.findAll()) {
+			for (SysRole role : roleService.findAll()) {//admin获得全部角色
 				SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.getEname());
 				authorities.add(authority);
 			}
+			SimpleGrantedAuthority authority = new SimpleGrantedAuthority("ROLE_ADMIN"); //超级管理员直接给超级权限
+			authorities.add(authority);
 		} else {
 			SysRoleMapper roleMapper = SpringContextHolder.getBean(SysRoleMapper.class);
 			for (SysRole role : roleMapper.findByRoleForUserid(getId())) {

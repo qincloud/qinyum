@@ -11,11 +11,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.ConfigAttribute;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.InsufficientAuthenticationException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.FilterInvocation;
+import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.stereotype.Service;
 
@@ -32,9 +36,16 @@ public class QinAccessDecisionManager2 implements AccessDecisionManager {
 	private SysMenuMapper menuMapper;
 
 	// decide 方法是判定是否拥有权限的决策方法
+	@PreAuthorize("isAuthenticated()") //没有登陆不允许访问
 	@Override
 	public void decide(Authentication authentication, Object object, Collection<ConfigAttribute> configAttributes)
 			throws AccessDeniedException, InsufficientAuthenticationException {
+		System.out.println("start decide");
+//		if (SecurityContextHolder.getContext().getAuthentication() == null
+//				 && !SecurityContextHolder.getContext().getAuthentication().isAuthenticated()) {
+//			
+//		}
+		
 		if(UserUtils.getUsername().equals("admin")) { //超级管理员不用验证直接返回
 			return;
 		}
@@ -51,9 +62,13 @@ public class QinAccessDecisionManager2 implements AccessDecisionManager {
 			}
 		}
 
+		String requrl = request.getRequestURI();
 		for(String url : urls) {
-			matcher = new AntPathRequestMatcher(url); 
-			if (matcher.matches(request)) { //request是请求的url,判断该请求是不是登陆用户拥有的url
+//			matcher = new AntPathRequestMatcher(url); 
+//			if (matcher.matches(request)) { //request是请求的url,判断该请求是不是登陆用户拥有的url
+//				return;
+//			}
+			if(requrl.startsWith(url)) {
 				return;
 			}
 		}

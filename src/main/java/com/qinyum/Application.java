@@ -27,10 +27,10 @@ public class Application extends WebMvcConfigurerAdapter {
 		return new EmbeddedServletContainerCustomizer() {
 			@Override
 			public void customize(ConfigurableEmbeddedServletContainer container) {
-				ErrorPage error401Page = new ErrorPage(HttpStatus.FORBIDDEN, "/403.ftl");
+				ErrorPage error403Page = new ErrorPage(HttpStatus.FORBIDDEN, "/403.ftl");
 				ErrorPage error404Page = new ErrorPage(HttpStatus.NOT_FOUND, "/404.ftl");
 				ErrorPage error500Page = new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/500.ftl");
-				container.addErrorPages(error401Page, error404Page, error500Page);
+				container.addErrorPages(error403Page, error404Page, error500Page);
 			}
 		};
 	}

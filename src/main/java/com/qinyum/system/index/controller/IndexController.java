@@ -16,17 +16,17 @@ public class IndexController extends BaseController {
 		return "/index";
 	}
 	
-	@RequestMapping("403")
+	@RequestMapping("f403")
 	public String f403() {
 		return "/403";
 	}
 	
-	@RequestMapping("404")
+	@RequestMapping("f404")
 	public String f404() {
 		return "/404";
 	}
 	
-	@RequestMapping("500")
+	@RequestMapping("f500")
 	public String f500() {
 		return "/500";
 	}

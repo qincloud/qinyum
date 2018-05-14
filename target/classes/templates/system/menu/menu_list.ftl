@@ -51,10 +51,10 @@
 						'2'>菜单级<#else>按钮级</#if></td>
 					<td>${(x.parent)!}</td>
                <td>${(x.create_time())!}</td>
-					<td><button href="#" onclick="edit('${(x.id)!}')"
+					<td><@sec.authorize access="hasAnyRole('ROLE_ADMIN','maintenance')"><button href="#" onclick="edit('${(x.id)!}')"
 							class="btn btn-success btn-sm">编辑</button>
 						<button href="#" onclick="del('${(x.id)!}','${(x.name)!}')"
-							class="btn btn-danger btn-sm">删除</button></td>
+							class="btn btn-danger btn-sm">删除</button></@sec.authorize></td>
 				</tr>
 				</#list>
 			</tbody>

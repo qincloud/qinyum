@@ -100,6 +100,7 @@
 					value="${(model.email)!}" placeholder="">
 			</div>
 			<!--------------------- 以下角色按钮设置 --------------------->
+			<fieldset><legend>角色权限</legend>
 			<div>
 			   <#assign x="0xc5b2cc11000309cb">    <!-- 随便设置了个变量 -->
 				<#if roles??> <#list roles as role>
@@ -124,7 +125,7 @@
 				</div>
 				</#if>
 				</#list> </#if>
-			</div>
+			</div></fieldset>
 			<!--------------------- 以上角色按钮设置 --------------------->
 			<div class="form-group">
 				<div class="col-lg-9 col-lg-offset-3">
