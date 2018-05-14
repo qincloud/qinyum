@@ -1,4 +1,5 @@
 <#include "/include/frame.ftl" /> <@frame title="系统登陆日志">
+<@sec.authorize access="hasAnyRole('ROLE_ADMIN')">
 <div class="card">
 	<div class="card-header">
 		<div class="card-title">
@@ -61,4 +62,5 @@
 		</table>
 	</div>
 </div>
+</@sec.authorize>
 </@frame>

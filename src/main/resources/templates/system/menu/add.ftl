@@ -262,7 +262,8 @@
 			</div>
 			<div class="form-group">
 				<div class="col-lg-9 col-lg-offset-3">
-					<button type="submit" class="btn btn-info">保存</button>
+				   <@sec.authorize access="hasAnyRole('ROLE_ADMIN','maintenance')">
+					<button type="submit" class="btn btn-info">保存</button></@sec.authorize>
 					<a href="/system/menu" class="btn btn-info">返回</a>
 				</div>
 			</div>

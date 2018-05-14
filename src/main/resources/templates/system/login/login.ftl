@@ -1,21 +1,20 @@
 <!doctype html>
 <html>
 <head>
-<link rel="shortcut icon " type="images/x-icon" href="/image/favicon.ico">
-<title>监狱局警察人事系统</title>
+<link rel="shortcut icon " type="images/x-icon"
+	href="/image/favicon.ico">
+<title>人事系统</title>
 <style>
-html {
-	height: 100%;
-	overflow: hidden;
-}
 
 body {
 	position: relative;
 	width: 100%;
-	height: 100%;
-	background: url("/tmp/image/banner_03.png") no-repeat center center
-		fixed;
-	background-blend-mode: darken;
+	background: #333;
+	overflow: hidden;
+	background-size: cover;
+	background-position: center center;
+	z-index: 1;
+	background-image:url("/tmp/image/demo-1-bg.jpg");
 }
 
 #wrapper {
@@ -94,36 +93,36 @@ body {
 </script>
 </head>
 <body>
-   <div>
-       <img src="/tmp/image/loginlogo.png" />
-   </div>
 	<form action="/loginCheck" id='loginForm' method="POST">
-	<div id="wrapper" class="bns-03">
-		<div id="loginWindow">
-			<div class="page-header">
-				<p class="left">
-					<!-- <span class="glyphicon glyphicon-lock" aria-hidden="true"></span> -->
-					<img src="/tmp/image/ywgklogo.png" />
-				</p>
-				<h1>用户登录</h1>
+		<div id="wrapper" class="bns-03">
+			<div id="loginWindow">
+				<div class="page-header">
+					<p class="left">
+						<!-- <span class="glyphicon glyphicon-lock" aria-hidden="true"></span> -->
+						<img src="/tmp/image/ywgklogo.png" />
+					</p>
+					<h1>用户登录</h1>
 
-			</div>
-			<div class="input-group">
-				<span class="input-group-addon" id="basic-addon1"><span
-					class="glyphicon glyphicon-user"></span></span> <input type="text" name="username" id="username"
-					class="form-control" placeholder="用户名" />
-			</div>
-			<div class="input-group">
-				<span class="input-group-addon" id="basic-addon2"><span
-					class="glyphicon glyphicon-lock"></span></span> <input type="password" name="password" id="password"
-					class="form-control" placeholder="密码" />
-			</div>
-			<div class="form-group">
-				<button class="btn btn-primary" type="submit">登录</button>
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon" id="basic-addon1"><span
+						class="glyphicon glyphicon-user"></span></span> <input type="text"
+						name="username" id="username" class="form-control"
+						placeholder="用户名" />
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon" id="basic-addon2"><span
+						class="glyphicon glyphicon-lock"></span></span> <input type="password"
+						name="password" id="password" class="form-control"
+						placeholder="密码" />
+				</div>
+				<div class="form-group">
+					<button class="btn btn-primary" type="submit">登录</button>
+				</div>
 			</div>
 		</div>
-	</div>
-	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
 	</form>
 </body>
 </html>

@@ -9,6 +9,7 @@ import com.qinyum.common.controller.BaseController;
 import com.qinyum.system.logs.model.SysLogs;
 import com.qinyum.system.logs.service.SysLogService;
 
+@Secured("ROLE_ADMIN")
 @Controller
 @RequestMapping("system/logs")
 public class LogsController extends BaseController {
@@ -17,7 +18,7 @@ public class LogsController extends BaseController {
 	@Autowired
 	private SysLogService service;
 
-	@Secured({"ROLE_ADMIN"})
+	@Secured("ROLE_ADMIN")
 	@RequestMapping()
 	public String index(SysLogs logs) {
 		setAttribute("pageInfo", service.query(logs));

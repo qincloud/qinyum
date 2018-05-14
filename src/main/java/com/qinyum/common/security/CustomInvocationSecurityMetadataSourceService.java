@@ -92,14 +92,13 @@ public class CustomInvocationSecurityMetadataSourceService implements FilterInvo
 					resourceMap.put(url, atts);// 一个URL对应多种角色
 				}
 			}
-			
-			
+
 		}
-		
-		List<SysMenu> menus = menuMapper.findMenuForHref(); //查询所有的访问级菜单
-		for(SysMenu menu : menus) {
+
+		List<SysMenu> menus = menuMapper.findMenuForHref(); // 查询所有的访问级菜单
+		for (SysMenu menu : menus) {
 			String url = menu.getHref();
-			if(!resourceMap.keySet().contains(url)) { //如果菜单没有授予角色就给一个none
+			if (!resourceMap.keySet().contains(url)) { // 如果菜单没有授予角色就给一个none
 				ConfigAttribute configAttribute = new SecurityConfig("none");
 				Collection<ConfigAttribute> atts = new ArrayList<ConfigAttribute>();
 				atts.add(configAttribute);
@@ -109,7 +108,7 @@ public class CustomInvocationSecurityMetadataSourceService implements FilterInvo
 		Iterator<String> iterator = resourceMap.keySet().iterator();
 		while (iterator.hasNext()) {
 			String resURL = iterator.next();
-			System.out.println("url＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝"+resURL);
+			System.out.println("url＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝" + resURL);
 		}
 	}
 
@@ -126,10 +125,13 @@ public class CustomInvocationSecurityMetadataSourceService implements FilterInvo
 		Iterator<String> iterator = resourceMap.keySet().iterator();
 		while (iterator.hasNext()) {
 			String resURL = iterator.next();
-			System.out.println("url2＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝"+resURL);
+			// System.out.println("url2＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝"+resURL);
 			// 优化请求路径后面带参数的部分
-			RequestMatcher requestMatcher = new AntPathRequestMatcher(resURL);
-			if (requestMatcher.matches(filterInvocation.getHttpRequest())) {
+			// RequestMatcher requestMatcher = new AntPathRequestMatcher(resURL);
+			// if (requestMatcher.matches(filterInvocation.getHttpRequest())) {
+			// return resourceMap.get(resURL);
+			// }
+			if(filterInvocation.getHttpRequest().getRequestURI().startsWith(resURL)) {
 				return resourceMap.get(resURL);
 			}
 		}
