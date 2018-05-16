@@ -32,21 +32,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	// }
 
 	protected void configure(HttpSecurity http) throws Exception {
-		http
-		.authorizeRequests().antMatchers("/login", "/tmp/**","/image/**").permitAll()
-				.anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll()
-				.loginProcessingUrl("/loginCheck").permitAll().failureUrl("/login?error").permitAll()
-				.successHandler(loginSuccessHandler()).permitAll()
-				.and().logout().logoutSuccessUrl("/login?logout")
-				.permitAll()
-				// 注销后使session相关信息无效
-				.invalidateHttpSession(true).and()
-				// 开启rememberme功能：验证，登录成功后，关闭页面，直接访问登陆后可以访问的页面
-				.rememberMe()
-				// 设置有效时间
-				.tokenValiditySeconds(30 * 60 * 60)
-				.and().exceptionHandling();
-//				.authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login"))
+		http.authorizeRequests().antMatchers("/login", "/tmp/**","/image/**").permitAll()
+          .anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll()
+			 .loginProcessingUrl("/loginCheck").permitAll().failureUrl("/login?error").permitAll()
+			 .successHandler(loginSuccessHandler()).permitAll()
+			 .and().logout().logoutSuccessUrl("/login?logout")
+			 .permitAll()
+			  // 注销后使session相关信息无效
+	       .invalidateHttpSession(true).and()
+			  // 开启rememberme功能：验证，登录成功后，关闭页面，直接访问登陆后可以访问的页面
+	       .rememberMe()
+			  // 设置有效时间
+	       .tokenValiditySeconds(30 * 60 * 60)
+	       .and().exceptionHandling();
+			 //.authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login"))
 		http.addFilter(filterSecurityInterceptor());
 	}
 

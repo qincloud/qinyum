@@ -82,6 +82,7 @@ public class UserUtils {
 		List<Object> allPrincipals = userUtils.sessionRegistry.getAllPrincipals();
 		for(Object object : allPrincipals) {
 			lists.add((SysUser)object);
+			System.out.println((SysUser)object);
 		}
 		return lists;
 	}
